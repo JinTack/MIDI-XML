@@ -1,0 +1,9 @@
+Revision history for Perl extension MIDI-XML.
+
+2003-01-20  Brian M. Ames  bmames@apk.net
+
+	* Release 0.01
+
+	* Initial release
+
+	* MidiXML support.
