@@ -16,11 +16,14 @@ ok(1); # If we made it this far, we're ok.
 # its man page ( perldoc Test ) for help writing this test script.
 
 use strict;
-#use MIDI::XML::MidiFile;
+use MIDI::XML::MidiFile;
 use MIDI::XML::Track;
 use MIDI::XML::Parser;
+use XML::Parser;
 
 use MIDI::Opus;
+use MIDI::Track;
+use MIDI::Event;
 my $file = 'test';
 
 my $opus = MIDI::Opus->new({ 'from_file' => "$file.mid"});
@@ -30,4 +33,4 @@ open XML,">","$file.xml";
 print XML "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"; 
 print XML join("\n",$midi->as_MidiXML());
 close XML;
-$MidiFile = MIDI::XML::Parser->parse_MidiXML("$file.xml");
+my $MidiFile = MIDI::XML::Parser->parse_MidiXML("$file.xml");

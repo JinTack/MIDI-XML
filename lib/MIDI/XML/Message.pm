@@ -6,27 +6,26 @@ use warnings;
 
 our @ISA = qw();
 
+our $VERSION = '0.02';
+
 =head1 NAME
 
-MIDI::XML::Channel - Base class for deriving classes for MIDI channel events.
+MIDI::XML::Channel - Base class for deriving MIDI message classes.
 
 =head1 SYNOPSIS
 
-  use MIDI::XML::Channel;
-  MIDI::XML::Channel->as_MidiXML($self);
+  use MIDI::XML::Message;
+  MIDI::XML::Message->as_MidiXML($self);
 
 =head1 DESCRIPTION
 
-MIDI::XML::Channel is the base class from which MIDI Channel objects are 
-derived.
+MIDI::XML::Message is the base class from which MIDI Message objects are 
+derived.  It should not generally be used directly except as shown in the
+classes for the individual messages.
 
 =head2 EXPORT
 
 None.
-
-=cut
-
-our $VERSION = '0.01';
 
 =head1 METHODS AND ATTRIBUTES
 

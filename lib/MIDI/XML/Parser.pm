@@ -8,6 +8,8 @@ use vars qw($element2class $MidiFile $Track $Event %attr $cdata $delta $absolute
 
 our @ISA = qw();
 
+our $VERSION = 0.02;
+
 =head1 NAME
 
 MIDI::XML::Parser - SAX Parser for creating MidiFile objects 
@@ -20,22 +22,16 @@ from XML.
 
 =head1 DESCRIPTION
 
-MIDI::XML::MidiFile is a class for .
+MIDI::XML::Parser is a class for parsing a file in
+MidiXML format and storing it as standard MIDI file. Additionally,
+by subclassing other MIDI-XML classes, it may be converted to
+another XML format.
 
 =head2 EXPORT
 
 None by default.
 
-our $VERSION = '0.01';
-
-
-#my $MidiFile;
-#my $Track;
-#my $Event;
-#my %attr;
-#my $cdata;
-#my $delta;
-#my $absolute;
+=cut
 
 #==========================================================================
 
@@ -191,16 +187,13 @@ sub end_elem_MidiXML {
         $attr{'Delta'} = $delta if (defined($delta));
         $attr{'Absolute'} = $absolute if (defined($absolute));
         if (${$element2class}{ $name }) {
-#            print "$name\n";
             $Track->append($element2class->{ $name }->new(\%attr));
         }
     }
 
 }
 
-
-
-return 1;
+1;
 __END__
 
 =head1 AUTHOR
@@ -209,7 +202,7 @@ Brian M. Ames, E<lt>bmames@apk.netE<gt>
 
 =head1 SEE ALSO
 
-L<perl>.
+L<XML::Parser>.
 
 =cut
 

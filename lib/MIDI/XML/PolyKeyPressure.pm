@@ -10,7 +10,7 @@ our @ISA = qw(MIDI::XML::Channel);
 
 =head1 NAME
 
-MIDI::XML::PolyKeyPressure - Class encapsulating MIDI Poly Key Pressure messages.
+MIDI::XML::PolyKeyPressure - MIDI Poly Key Pressure messages.
 
 =head1 SYNOPSIS
 
@@ -52,7 +52,7 @@ None.
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 #==========================================================================
 

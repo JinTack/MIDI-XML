@@ -7,40 +7,50 @@ use MIDI::Opus;
 
 our @ISA = qw();
 
+our $VERSION = 0.02;
+
 =head1 NAME
 
 MIDI::XML::MIDI - MIDI file/stream data.
 
 =head1 SYNOPSIS
 
-use MIDI::XML::MidiFile;
-use MIDI::XML::Track;
+  use strict;
+  use MIDI::XML::MidiFile;
+  use MIDI::XML::Track;
+  use MIDI::XML::Parser;
+  use XML::Parser;
 
-use MIDI::Opus;
+  use MIDI::Opus;
+  use MIDI::Track;
+  use MIDI::Event;
 
-unless (@ARGV) {
-die "Usage: perl testmidixml.pl filename\n";
-}
+  unless (@ARGV) {
+  die "Usage: perl test.pl filename\n";
+  }
 
-my $file = shift @ARGV;
+  my $file = shift @ARGV;
 
-my $opus = MIDI::Opus->new({ 'from_file' => "$file.mid"});
-my $midi=MIDI::XML::MidiFile->new({'from_opus' => $opus});
-my $measures = $midi->measures();
-open XML,">","$file.xml";
-print XML "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"; 
-print XML join("\n",$midi->as_MidiXML());
-close XML;
+  my $opus = MIDI::Opus->new({ 'from_file' => "$file.mid"});
+  my $midi=MIDI::XML::MidiFile->new({'from_opus' => $opus});
+  my $measures = $midi->measures();
+  open XML,">","$file.xml";
+  print XML "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"; 
+  print XML join("\n",$midi->as_MidiXML());
+  close XML;
+  my $MidiFile = MIDI::XML::Parser->parse_MidiXML("$file.xml");
 
 =head1 DESCRIPTION
 
-MIDI::XML::MidiFile is a class for .
+MIDI::XML::MidiFile is a class for representing a MIDI file. There are
+methods for the file attribute and a collection containing MIDI::XML::Track
+objects.
 
 =head2 EXPORT
 
-None by default.
+None.
 
-our $VERSION = '0.01';
+=cut
 
 #==========================================================================
 
@@ -48,7 +58,7 @@ our $VERSION = '0.01';
 
 =over 4
 
-=item $obj = MIDI::XML::MIDI->new()
+=item $obj = MIDI::XML::MidiFile->new()
 
 This creates a new MIDI::XML::MidiFile object.
 
@@ -297,12 +307,13 @@ sub measures {
     if (@_) {
     } else {
         my $tsigs = $self->{'_Tracks'}->[0]->time_signatures();
-    foreach my $tsig (@{$tsigs}) {
-        my $abs = $tsig->absolute();
-        my $num = $tsig->numerator();
-        my $log = $tsig->logDenominator();
-        my $den = 2 ** $log;
-        push @timesig, [$abs,$num,$den];
+        foreach my $tsig (@{$tsigs}) {
+            my $abs = $tsig->absolute();
+            my $num = $tsig->numerator();
+            my $log = $tsig->logDenominator();
+            my $den = 2 ** $log;
+            push @timesig, [$abs,$num,$den];
+        }
     }
 
     push @timesig, [$end,1,1];
@@ -315,7 +326,6 @@ sub measures {
         my $divs = $denom_ticks * $timesig[$i]->[1];
         while ($time < $lim) {
             push @{$self->{'_Measures'}},[$time,$denom_ticks];
-            print "$meas, $time, $denom_ticks\n";
             $meas++;
             $time += $divs;
         }

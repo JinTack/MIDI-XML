@@ -10,7 +10,7 @@ our @ISA = qw(MIDI::XML::Channel);
 
 =head1 NAME
 
-MIDI::XML::ChannelKeyPressure - Class encapsulating MIDI Channel Key Pressure 
+MIDI::XML::ChannelKeyPressure - MIDI Channel Key Pressure 
 messages.
 
 =head1 SYNOPSIS
@@ -51,7 +51,7 @@ None by default.
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 #==========================================================================
 

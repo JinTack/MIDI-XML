@@ -10,7 +10,7 @@ our @ISA = qw(MIDI::XML::Message);
 
 =head1 NAME
 
-MIDI::XML::SetTempo - Class encapsulating MIDI Set Tempo messages.
+MIDI::XML::SetTempo - MIDI Set Tempo messages.
 
 =head1 SYNOPSIS
 
@@ -39,7 +39,7 @@ None.
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 #==========================================================================
 

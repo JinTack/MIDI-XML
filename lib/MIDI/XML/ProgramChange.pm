@@ -10,7 +10,7 @@ our @ISA = qw(MIDI::XML::Channel);
 
 =head1 NAME
 
-MIDI::XML::ProgramChange - Class encapsulating MIDI Note Off messages.
+MIDI::XML::ProgramChange - MIDI Program Change messages.
 
 =head1 SYNOPSIS
 
@@ -49,7 +49,7 @@ None.
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 #==========================================================================
 
