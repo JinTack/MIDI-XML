@@ -1,14 +1,17 @@
-MIDI-XML version 0.02
+MIDI-XML version 0.03
 =====================
 
 MIDI-XML is a suite of Perl modules that provide the capability to convert 
 MIDI files to XML and XML to MIDI files.  It builds on the foundation provided
 by MIDI-Perl which provides the capability to read and write MIDI files.  This
-initial release provides the ability to produce and parse MidiXML. The 
-classes may subclassed to provide support for other DTDs.
+release provides the ability to read and write MidiXML files and to import and 
+export standard MIDI files. 
 
 MIDI-XML also provides built-in collections of the the various MIDI events and
 derivable collections, such as measures.
+
+MIDI-XML-Editor has been added which, although primitive at this time, will 
+be the focus of my improvements.
 
 INSTALLATION
 
@@ -23,28 +26,19 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  MIDI::Opus MIDI::Track MIDI::Event HTML::Entities XML::Parser
+   Carp
+   Class::ISA
+   XML::DOM
+   XML::Parser
+   Tk 800.000
+   Tk::Tree
 
-SUPPORT
+COPYRIGHT AND LICENCE
 
-Questions, bug reports, useful code bits, and suggestions for
-MIDI-XML should just be sent to me at bmames@apk.net
+Copyright (C) 2008 by Brian M. Ames
 
-DOCUMENT TYPE DEFINITIONS
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.8 or,
+at your option, any later version of Perl 5 you may have available.
 
-The DTD for MidiXML may be had at this URL:
 
-http://www.musicxml.org/dtds/midixml.dtd
-
-This release supports version 0.7
-
-AVAILABILITY
-
-The latest version of MIDI-XML is available from the Comprehensive
-Perl Archive Network (CPAN).  Visit <http://www.perl.com/CPAN/> to
-find a CPAN site near you.
-
-COPYRIGHT AND LICENSE
-
-Copyright (C) 2003 Brian M. Ames. This software may be used under the terms of
-the GPL and Artistic licenses, the same as Perl itself.
